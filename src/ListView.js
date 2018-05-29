@@ -5,6 +5,14 @@ import { Marker } from 'react-google-maps';
 
 class ListView extends Component {
 
+  state = {
+    query: '',
+  }
+
+  updateQuery = (query) => {
+    this.setState({ query: query })
+  }
+
   render() {
     return (
       <div className="List-view">
@@ -33,7 +41,17 @@ class ListView extends Component {
           </MyMapComponent>
         </div>
         <aside className="List-view-search">
-          <h2>Search</h2>
+          <input type='text' placeholder='Search by monument' value={this.state.query}
+              onChange={(event) => this.updateQuery(event.target.value)}/>
+              <ul className="Markers-list">
+                {this.props.markers.map(marker => (
+                  <li key={marker.id}>
+                    <Link className="List-view-link" to={`/listview/${marker.path}`}>
+                      {marker.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
         </aside>
       </div>
     );
