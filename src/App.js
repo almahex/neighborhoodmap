@@ -15,36 +15,36 @@ class App extends Component {
         path: 'la-sagrada-familia',
         name: 'La Sagrada Familia',
         id: '00001',
-        lat: 41.4051156,
-        lng: 2.1696112
+        lat: 41.403941,
+        lng: 2.174353
       },
       {
         path: 'park-guell',
         name: 'Park Güell',
         id: '00002',
-        lat: 41.4144988,
-        lng: 2.1505005
+        lat: 41.414746,
+        lng: 2.15288
       },
       {
         path: 'casa-batllo',
         name: 'Casa Batlló',
         id: '00003',
-        lat: 41.3916088,
-        lng: 2.1625483
+        lat: 41.391609,
+        lng: 2.162548
       },
       {
         path: 'la-pedrera',
         name: 'La Pedrera',
         id: '00004',
-        lat: 41.394684,
-        lng: 2.159456
+        lat: 41.395103,
+        lng: 2.161596
       },
       {
-        path: 'casa-vicenç',
-        name: 'Casa Vicenç',
+        path: 'casa-vicens',
+        name: 'Casa Vicens',
         id: '00005',
-        lat: 41.4035018,
-        lng: 2.1484515
+        lat: 41.403445,
+        lng: 2.150629
       }
     ]
   }
@@ -53,11 +53,14 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/" render={() => (
-            <MapArea markers={this.state.markers}/>)}/>
-          <Route exact path="/listview" render={() => (
-            <ListView markers={this.state.markers}/>)}/>
-          <Route path="/listview/:id" component={MonumentDetails} markers={this.state.markers}/>
+          <Route exact path="/" render={({history}) => (
+            <MapArea markers={this.state.markers} history={history}/>)}/>
+          <Route exact path="/listview" render={({history}) => (
+            <ListView markers={this.state.markers} history={history}/>)}/>
+          {this.state.markers.map(marker => (
+            <Route path={"/listview/"+marker.path} key={marker.id} render={() => (
+              <MonumentDetails marker={marker}/>)}/>
+          ))}
           <Route component={NoMatch}/>
         </Switch>
         <footer className="App-footer">

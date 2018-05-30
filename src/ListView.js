@@ -13,12 +13,18 @@ class ListView extends Component {
     this.setState({ query: query })
   }
 
+  handleClick = (path, e) => {
+    this.props.history.push(path)
+  }
+
   render() {
     return (
       <div className="List-view">
         <div className="List-view-header-map">
           <header className="App-header">
-            <h1 className="App-title">Gaudi's Tour</h1>
+            <Link className="List-view-link" to="/">
+              <h1 className="App-title">Gaudi's Tour</h1>
+            </Link>
             <Link className="List-view-link" to="/">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
@@ -36,6 +42,7 @@ class ListView extends Component {
               <Marker
                 key={marker.id}
                 position={{lat: parseFloat(marker.lat), lng: parseFloat(marker.lng)}}
+                onClick={(e) => this.handleClick(`/listview/${marker.path}`, e)}
                 />
             ))}
           </MyMapComponent>

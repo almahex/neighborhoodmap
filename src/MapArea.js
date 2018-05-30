@@ -5,11 +5,17 @@ import { Marker } from 'react-google-maps';
 
 class MapArea extends Component {
 
+  handleClick = (path, e) => {
+    this.props.history.push(path)
+  }
+
   render() {
     return (
       <div className="Map-area">
         <header className="App-header">
-          <h1 className="App-title">Gaudi's Tour</h1>
+          <Link className="List-view-link" to="/">
+            <h1 className="App-title">Gaudi's Tour</h1>
+          </Link>
           <Link className="List-view-link" to="/listview">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             	<path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
@@ -27,6 +33,7 @@ class MapArea extends Component {
 						<Marker
 							key={marker.id}
 							position={{lat: parseFloat(marker.lat), lng: parseFloat(marker.lng)}}
+              onClick={(e) => this.handleClick(`/listview/${marker.path}`, e)}
 							/>
 					))}
 	      </MyMapComponent>

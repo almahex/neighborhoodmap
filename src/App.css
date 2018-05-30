@@ -40,6 +40,11 @@ p {
   font-size: 47px;
 }
 
+.App-header a {
+  color: black;
+  text-decoration: none;
+}
+
 /* Map Area */
 
 .Map-area {
@@ -87,7 +92,7 @@ p {
 .List-view-search input {
   margin-left: 2em;
   border: none;
-  padding: 10px 4px 10px 10px;
+  padding: 10px 25px 10px 15px;
   font-size: 16pt;
 }
 
@@ -99,6 +104,15 @@ p {
 
 .Markers-list li {
   padding: 1em 0;
+}
+
+/* Monument Details */
+
+.Monument-details {
+  padding-top: 3em;
+  text-align: center;
+  font-size: 14pt;
+  text-decoration: none;
 }
 
 /* No Page Match */
