@@ -16,6 +16,7 @@ In order to use it, download the package, cd into it and simply run ´npm instal
 * [react-google-maps](https://www.npmjs.com/package/react-google-maps)
 * [escape-string-regexp]https://www.npmjs.com/package/escape-string-regexp)
 * [sort-by](https://www.npmjs.com/package/sort-by)
+* [superagent](https://www.npmjs.com/package/superagent)
 
 ### Documentation used
 
@@ -25,7 +26,9 @@ In order to use it, download the package, cd into it and simply run ´npm instal
 
 ### Examples taken as a reference
 
-* [Google Maps] https://github.com/filipegorges/door2door_challenge/blob/a3d359ef516e4b8cc7c9261a2da983057bccc9f7/front_end/door2door_front_end/src/components/Map.js
+* [Google Maps API Request](https://github.com/filipegorges/door2door_challenge/blob/a3d359ef516e4b8cc7c9261a2da983057bccc9f7/front_end/door2door_front_end/src/components/Map.js)
+* [Flickr API Request](https://github.com/reapp/demo-flickr/blob/master/app/components/App.jsx)
+* [Flickr API Request](https://github.com/wulfy/isomorph/blob/0ab6fef1b3dc9ddde344bddefc4ea1d504b7a9fb/src/components/photolist.component.jsx)
 
 ### Contributors
 

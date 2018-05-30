@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import MyMapComponent from './MyMapComponent';
 import { Marker } from 'react-google-maps';
 import { Link } from 'react-router-dom';
+import Superagent from 'superagent';
+import FlickImg from './FlickImg';
+
 
 class MonumentDetails extends Component {
 
@@ -16,35 +19,32 @@ class MonumentDetails extends Component {
     }));
   }
 
-  getImages() {
-    fetch(`https://api.unsplash.com/search/photos?page=1&query=${this.props.marker.name} Barcelona`, {
-        headers: {
-            Authorization: 'Client-ID b20af5277329d66b5c02168c47eebd793ba62599ef311af507e8e3a4dd1a8ef4'
-        }
-    }).then(response => response.json())
-    .then(this.addImage.bind(this))
-    .catch(e => this.requestError(e, 'image'));
+  getFlickrPhotoUrl(image) {
+    return `https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`;
   }
 
-  addImage (images) {
-    let resultImg = []
-    if (images && images.results && images.results[0]) {
-      for (let i=0; i<4; i++){
-        resultImg.push(images.results[i].urls.thumb)
-      }
-      this.setState((state) => ({
-        markerImg: state.markerImg = resultImg
-      }))
-    }
-  }
-
-  requestError(e, part) {
-    console.log(e);
-    console.log("Oh no! There was an error making a request for this image.");
+  handleSearch() {
+    let searchText = this.props.marker.name;
+    let allImages = []
+    var self = this;
+    Superagent
+      .get('https://api.flickr.com/services/rest')
+      .query({
+        method: 'flickr.photos.search',
+        text: searchText,
+        api_key: 'ecb1146edd349b08e951f8bd6b22703c',
+        format: 'json',
+        nojsoncallback: 1,
+        privacy_filter: 1
+      })
+      .end(function(error, res){
+        allImages = res.body.photos.photo.slice(24,35)
+        self.setState({markerImg: allImages});
+      });
   }
 
   componentWillMount() {
-    this.getImages()
+    this.handleSearch()
   }
 
   render() {
@@ -82,9 +82,7 @@ class MonumentDetails extends Component {
               <div className="Monument-images">
                 <ul>
                   {this.state.markerImg.map((img, index) => (
-                    <li key={index}>
-                      <img src={img} alt={marker.name}/>
-                    </li>
+                    <FlickImg photo={img} key={index}/>
                   ))}
                 </ul>
               </div>

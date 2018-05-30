@@ -75,6 +75,19 @@ p {
   justify-content: space-between;
 }
 
+.Home-link {
+  margin: 10px 0 2em auto;
+  background-image: url('./icons/arrow.svg');
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 5px;
+}
+
 .List-view-header-map {
   display: flex;
   flex-direction: column;
@@ -82,7 +95,7 @@ p {
 }
 
 .List-view-search {
-  border-left: 5px solid #fd9f15;
+  border-left: 40px solid #ccc;
   min-width: 400px;
   padding: 5em 0;
   background-color: #e4e4e4;
