@@ -108,13 +108,6 @@ p {
 
 /* Monument Details */
 
-.Monument-details {
-  padding-top: 3em;
-  text-align: center;
-  font-size: 14pt;
-  text-decoration: none;
-}
-
 .Search-monument {
   background-image: url('./icons/glass.svg');
   background-repeat: no-repeat;
@@ -122,7 +115,30 @@ p {
   outline: none;
   text-decoration: none;
   padding: 15px;
-  margin-left: 340px;
+  margin-left: 45px;
+}
+
+.Monument-details {
+  padding-top: 2em;
+  text-align: center;
+  font-size: 14pt;
+  text-decoration: none;
+}
+
+.Monument-images {
+  margin-top: 2em;
+}
+
+.Monument-images ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+}
+
+.Monument-images ul li {
+  list-style: none;
+  padding: 10px;
 }
 
 /* No Page Match */

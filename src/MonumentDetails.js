@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 class MonumentDetails extends Component {
 
   state = {
+    markerImg: [],
     showNavBar: true,
   }
 
@@ -13,6 +14,37 @@ class MonumentDetails extends Component {
     this.setState(prevState => ({
       showNavBar: !prevState.showNavBar
     }));
+  }
+
+  getImages() {
+    fetch(`https://api.unsplash.com/search/photos?page=1&query=${this.props.marker.name} Barcelona`, {
+        headers: {
+            Authorization: 'Client-ID b20af5277329d66b5c02168c47eebd793ba62599ef311af507e8e3a4dd1a8ef4'
+        }
+    }).then(response => response.json())
+    .then(this.addImage.bind(this))
+    .catch(e => this.requestError(e, 'image'));
+  }
+
+  addImage (images) {
+    let resultImg = []
+    if (images && images.results && images.results[0]) {
+      for (let i=0; i<4; i++){
+        resultImg.push(images.results[i].urls.thumb)
+      }
+      this.setState((state) => ({
+        markerImg: state.markerImg = resultImg
+      }))
+    }
+  }
+
+  requestError(e, part) {
+    console.log(e);
+    console.log("Oh no! There was an error making a request for this image.");
+  }
+
+  componentWillMount() {
+    this.getImages()
   }
 
   render() {
@@ -47,6 +79,15 @@ class MonumentDetails extends Component {
             </Link>
             <div className="Monument-details">
               <h3>{marker.name}</h3>
+              <div className="Monument-images">
+                <ul>
+                  {this.state.markerImg.map((img, index) => (
+                    <li key={index}>
+                      <img src={img} alt={marker.name}/>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </aside>
         )}
