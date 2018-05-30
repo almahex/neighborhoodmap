@@ -58,8 +58,8 @@ class App extends Component {
           <Route exact path="/listview" render={({history}) => (
             <ListView markers={this.state.markers} history={history}/>)}/>
           {this.state.markers.map(marker => (
-            <Route path={"/listview/"+marker.path} key={marker.id} render={() => (
-              <MonumentDetails marker={marker}/>)}/>
+            <Route path={"/listview/"+marker.path} key={marker.id} render={({history}) => (
+              <MonumentDetails marker={marker} history={history}/>)}/>
           ))}
           <Route component={NoMatch}/>
         </Switch>

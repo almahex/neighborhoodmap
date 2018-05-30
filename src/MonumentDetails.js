@@ -6,12 +6,7 @@ import { Link } from 'react-router-dom';
 class MonumentDetails extends Component {
 
   state = {
-    query: '',
     showNavBar: true,
-  }
-
-  updateQuery = (query) => {
-    this.setState({ query: query })
   }
 
   handleClick() {
@@ -48,8 +43,8 @@ class MonumentDetails extends Component {
         </div>
         {this.state.showNavBar && (
           <aside className="List-view-search">
-            <input type='text' placeholder='Search by monument' value={this.state.query}
-                onChange={(event) => this.updateQuery(event.target.value)}/>
+            <Link className="Search-monument" to="/listview">
+            </Link>
             <div className="Monument-details">
               <h3>{marker.name}</h3>
             </div>

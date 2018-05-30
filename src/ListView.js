@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import MyMapComponent from './MyMapComponent';
 import { Marker } from 'react-google-maps';
+import escapeRegExp from 'escape-string-regexp';
+import sortBy from 'sort-by';
+
 
 class ListView extends Component {
 
@@ -18,6 +21,16 @@ class ListView extends Component {
   }
 
   render() {
+    let showingMonuments
+    if (this.state.query) {
+      const match = new RegExp(escapeRegExp(this.state.query), 'i')
+      showingMonuments = this.props.markers.filter((monument) => match.test(monument.name))
+    } else {
+      showingMonuments = this.props.markers
+    }
+
+    showingMonuments.sort(sortBy('name'))
+
     return (
       <div className="List-view">
         <div className="List-view-header-map">
@@ -38,7 +51,7 @@ class ListView extends Component {
             mapElement={<div style={{ height: `100%` }} />}
             defaultZoom={12.7}
             defaultCenter={{lat: 41.3968849, lng: 2.1587406}}>
-            {this.props.markers.map(marker => (
+            {showingMonuments.map(marker => (
               <Marker
                 key={marker.id}
                 position={{lat: parseFloat(marker.lat), lng: parseFloat(marker.lng)}}
@@ -48,10 +61,10 @@ class ListView extends Component {
           </MyMapComponent>
         </div>
         <aside className="List-view-search">
-          <input type='text' placeholder='Search by monument' value={this.state.query}
+          <input type='text' placeholder='Search monuments' value={this.state.query}
               onChange={(event) => this.updateQuery(event.target.value)}/>
               <ul className="Markers-list">
-                {this.props.markers.map(marker => (
+                {showingMonuments.map(marker => (
                   <li key={marker.id}>
                     <Link className="List-view-link" to={`/listview/${marker.path}`}>
                       {marker.name}

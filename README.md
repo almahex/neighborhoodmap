@@ -14,6 +14,8 @@ In order to use it, download the package, cd into it and simply run ´npm instal
 * [react-router-dom](https://www.npmjs.com/package/react-router-dom)
 * [prop-types](https://www.npmjs.com/package/prop-types) ?
 * [react-google-maps](https://www.npmjs.com/package/react-google-maps)
+* [escape-string-regexp]https://www.npmjs.com/package/escape-string-regexp)
+* [sort-by](https://www.npmjs.com/package/sort-by)
 
 ### Documentation used
 
