@@ -10,6 +10,7 @@ class MonumentDetails extends Component {
 
   state = {
     markerImg: [],
+    markerData: [],
     showNavBar: true,
   }
 
@@ -17,6 +18,22 @@ class MonumentDetails extends Component {
     this.setState(prevState => ({
       showNavBar: !prevState.showNavBar
     }));
+  }
+
+  getWikipediaData() {
+    var self = this;
+    let searchText = this.props.marker.name;
+    let url =`https://en.wikipedia.org/w/api.php?action=opensearch&search=${searchText}&format=json&origin=*`
+    fetch(url)
+    .then(function(res) {
+      if (res.ok) {
+        return res.json();
+      }
+      throw new Error( 'Network response was not ok: ' + res.statusText );
+    }).then(function(data){
+      console.log(data)
+      self.setState({markerData: data});
+    });
   }
 
   getFlickrPhotoUrl(image) {
@@ -38,17 +55,30 @@ class MonumentDetails extends Component {
         privacy_filter: 1
       })
       .end(function(error, res){
-        allImages = res.body.photos.photo.slice(24,35)
+        allImages = res.body.photos.photo.slice(24,34)
         self.setState({markerImg: allImages});
       });
   }
 
+  checkArray(a) {
+    if (a instanceof Array && a.length > 1) {
+      return a[0]
+    } else {
+      return a
+    }
+  }
+
   componentWillMount() {
     this.handleSearch()
+    this.getWikipediaData()
   }
 
   render() {
     const marker = this.props.marker
+    const [ , preWikiTitle, preWikiIntro, preWikiLink ] = this.state.markerData
+    const wikiTitle = this.checkArray(preWikiTitle)
+    const wikiIntro = this.checkArray(preWikiIntro)
+    const wikiLink = this.checkArray(preWikiLink)
 
     return (
       <div className="List-view">
@@ -78,8 +108,12 @@ class MonumentDetails extends Component {
             <Link className="Search-monument" to="/listview">
             </Link>
             <div className="Monument-details">
-              <h3>{marker.name}</h3>
               <div className="Monument-images">
+                <div className="Wikipedia-link">
+                  <h3>{wikiTitle}</h3>
+                  <p>{wikiIntro}</p>
+                  <a href={wikiLink}>{wikiLink}</a>
+                </div>
                 <ul>
                   {this.state.markerImg.map((img, index) => (
                     <FlickImg photo={img} key={index}/>

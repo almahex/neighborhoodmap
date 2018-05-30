@@ -23,6 +23,8 @@ In order to use it, download the package, cd into it and simply run ´npm instal
 * [React Google Maps](https://tomchentw.github.io/react-google-maps/)
 * [Dynamic Routes](https://scotch.io/tutorials/routing-react-apps-the-complete-guide)
 * [Handling events in react](https://reactjs.org/docs/handling-events.html)
+* [Flickr API - Method flickr.photo.search](https://www.flickr.com/services/api/flickr.photos.search.html)
+* [Wikipedia API](https://www.mediawiki.org/wiki/API:Main_page)
 
 ### Examples taken as a reference
 

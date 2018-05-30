@@ -96,7 +96,7 @@ p {
 
 .List-view-search {
   border-left: 40px solid #ccc;
-  min-width: 400px;
+  max-width: 500px;
   padding: 5em 0;
   background-color: #e4e4e4;
 
