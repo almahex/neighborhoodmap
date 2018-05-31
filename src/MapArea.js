@@ -17,7 +17,7 @@ class MapArea extends Component {
             <h1 className="App-title">Gaudi's Tour</h1>
           </Link>
           <Link className="List-view-link" to="/listview">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             	<path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
           	</svg>
           </Link>

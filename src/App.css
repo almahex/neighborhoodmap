@@ -19,7 +19,8 @@ p {
 
 .App-header {
   width: 100%;
-  margin: 3em auto 0;
+  margin: 0 auto 0;
+  padding-top: 3em;
   color: black;
   border-bottom: 5px solid #fd9f15;
   display: flex;
@@ -27,6 +28,8 @@ p {
   justify-content: space-between;
   z-index: 10;
   min-height: 100px;
+  background-image: url('./icons/header.jpg');
+  align-items: flex-end;
 }
 
 .App-header h1 {
@@ -38,12 +41,13 @@ p {
 }
 
 .App-title {
-  font-weight: 100;
+  font-weight: 900;
+  letter-spacing: 3px;
   font-size: 47px;
 }
 
 .App-header a {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -54,9 +58,21 @@ p {
   height: 100%;
 }
 
-.List-view-link svg,
-.List-view-link-aside svg {
-  margin: 10px 0 2em auto;
+.List-view-link-aside {
+  text-decoration: none;
+}
+
+.List-view-link-aside span {
+  margin: 10px 0 0 20px;
+  font-size: 38pt;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  color: black;
+}
+
+.List-view-link svg {
+  margin: 10px 0 0 auto;
   background-repeat: no-repeat;
   width: 40px;
   height: 40px;
@@ -87,8 +103,6 @@ p {
 
 .Home-link {
   margin: 10px 0 2em auto;
-  background-image: url('./icons/arrow.svg');
-  background-repeat: no-repeat;
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -114,17 +128,18 @@ p {
 }
 
 .List-view-search input {
-  margin: 0 1em 0;
+  margin: 2em 1em 0;
   border: none;
   padding: 10px 0 10px 15px;
-  font-size: 16pt;
-  width: 200px;
+  font-size: 12pt;
+  width: 185px;
 }
 
 .Markers-list {
+  padding-left: 10px;
   margin: 2em 0;
   list-style: none;
-  font-size: 16pt;
+  font-size: 12pt;
 }
 
 .Markers-list li {
@@ -150,13 +165,13 @@ p {
   text-decoration: none;
   padding: 15px;
   float: right;
-  margin-top: 1.5em;
+  margin-top: 1em;
   margin-right: 2em;
 }
 
 .Monument-details {
   text-align: center;
-  font-size: 14pt;
+  font-size: 12pt;
   text-decoration: none;
 }
 
@@ -219,7 +234,7 @@ a {
     font-size: 40px;
   }
   .App-header {
-    margin-top: 1em;
+    margin-top: 0;
   }
 }
 
@@ -229,7 +244,8 @@ a {
     font-size: 40px;
   }
   .App-header {
-    margin-top: 1em;
+    margin-top: 0;
+    padding-top: 2em;
     min-height: 140px;
   }
 }
@@ -240,12 +256,9 @@ a {
     z-index: 20;
     width: 100px;
     top: 0;
-    right: -10px;
+    right: -15px;
     height: 100%;
-  }
-  .List-view-search input,
-  .Markers-list {
-    font-size: 12pt;
+    margin-top: 6em;
   }
   .List-view-search input {
     padding: 10px 0 10px 10px;
@@ -258,9 +271,7 @@ a {
     text-align: left;
   }
   .Search-monument {
-    margin-top: 7.5em;
-  }
-  .List-view-link-aside svg {
-    margin-top: 4em;
+    margin-top: 15px;
+    margin-right: 40px;
   }
 }

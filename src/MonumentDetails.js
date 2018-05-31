@@ -4,6 +4,7 @@ import { Marker } from 'react-google-maps';
 import { Link } from 'react-router-dom';
 import Superagent from 'superagent';
 import FlickImg from './FlickImg';
+import specialMarker from './icons/mapMarker.png'
 
 
 class MonumentDetails extends Component {
@@ -101,15 +102,13 @@ class MonumentDetails extends Component {
             mapElement={<div style={{ height: `100%` }} />}
             defaultZoom={17}
             defaultCenter={{lat: parseFloat(marker.lat), lng: parseFloat(marker.lng)}}>
-            <Marker key={marker.id} position={{lat: parseFloat(marker.lat), lng: parseFloat(marker.lng)}}/>
+            <Marker key={marker.id} position={{lat: parseFloat(marker.lat), lng: parseFloat(marker.lng)}} icon={specialMarker}/>
           </MyMapComponent>
         </div>
         {this.state.showNavBar && (
           <aside className="List-view-search">
             <a className="List-view-link-aside" onClick={this.handleClick.bind(this)}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
-              </svg>
+              <span role="img" aria-label="close">❌</span>
             </a>
             <Link className="Search-monument" to="/listview">
             </Link>

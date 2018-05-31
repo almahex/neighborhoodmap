@@ -57,9 +57,7 @@ class ListView extends Component {
         </div>
         <aside className="List-view-search">
           <Link className="List-view-link-aside" to="/">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
-            </svg>
+            <span role="img" aria-label="close">❌</span>
           </Link>
           <input type='text' placeholder='Search monuments' value={this.state.query}
               onChange={(event) => this.updateQuery(event.target.value)}/>
