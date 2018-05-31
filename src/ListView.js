@@ -59,6 +59,7 @@ class ListView extends Component {
           <Link className="List-view-link-aside" to="/">
             <span role="img" aria-label="close">❌</span>
           </Link>
+          <br/>
           <input type='text' placeholder='Search monuments' value={this.state.query}
               onChange={(event) => this.updateQuery(event.target.value)}/>
               <ul className="Markers-list">
