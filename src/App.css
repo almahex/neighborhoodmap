@@ -54,7 +54,8 @@ p {
   height: 100%;
 }
 
-.List-view-link svg {
+.List-view-link svg,
+.List-view-link-aside svg {
   margin: 10px 0 2em auto;
   background-repeat: no-repeat;
   width: 40px;
@@ -113,7 +114,7 @@ p {
 }
 
 .List-view-search input {
-  margin: 3em 1em 0;
+  margin: 0 1em 0;
   border: none;
   padding: 10px 0 10px 15px;
   font-size: 16pt;
@@ -149,11 +150,11 @@ p {
   text-decoration: none;
   padding: 15px;
   float: right;
+  margin-top: 1.5em;
   margin-right: 2em;
 }
 
 .Monument-details {
-  padding-top: 1em;
   text-align: center;
   font-size: 14pt;
   text-decoration: none;
@@ -250,5 +251,16 @@ a {
     padding: 10px 0 10px 10px;
     width: 150px;
     text-align: left;
+  }
+  .List-view-search input {
+    padding: 10px 0 10px 10px;
+    width: 150px;
+    text-align: left;
+  }
+  .Search-monument {
+    margin-top: 7.5em;
+  }
+  .List-view-link-aside svg {
+    margin-top: 4em;
   }
 }

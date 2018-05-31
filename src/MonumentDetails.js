@@ -106,7 +106,7 @@ class MonumentDetails extends Component {
         </div>
         {this.state.showNavBar && (
           <aside className="List-view-search">
-            <a className="List-view-link" onClick={this.handleClick.bind(this)}>
+            <a className="List-view-link-aside" onClick={this.handleClick.bind(this)}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
               </svg>
