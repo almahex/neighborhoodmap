@@ -25,6 +25,8 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  z-index: 10;
+  min-height: 100px;
 }
 
 .App-header h1 {
@@ -73,6 +75,13 @@ p {
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
+  overflow: hidden;
+  height: 70vh;
+  margin-top: -100px;
+  padding-top: 100px;
+  position: relative;
+  backface-visibility: hidden;
+  will-change: overflow;
 }
 
 .Home-link {
@@ -96,17 +105,19 @@ p {
 
 .List-view-search {
   border-left: 40px solid #ccc;
-  max-width: 500px;
-  padding: 5em 0;
+  max-width: 600px;
+  min-width: 230px;
+  padding: 2em 0;
   background-color: #e4e4e4;
-
+  overflow: auto;
 }
 
 .List-view-search input {
-  margin-left: 2em;
+  margin: 3em 1em 0;
   border: none;
-  padding: 10px 25px 10px 15px;
+  padding: 10px 0 10px 15px;
   font-size: 16pt;
+  width: 200px;
 }
 
 .Markers-list {
@@ -119,6 +130,15 @@ p {
   padding: 1em 0;
 }
 
+.Markers-list li a {
+  text-decoration: none;
+  color: black;
+}
+
+.Markers-list li a:hover {
+  text-decoration: underline;
+}
+
 /* Monument Details */
 
 .Search-monument {
@@ -128,14 +148,35 @@ p {
   outline: none;
   text-decoration: none;
   padding: 15px;
-  margin-left: 45px;
+  float: right;
+  margin-right: 2em;
 }
 
 .Monument-details {
-  padding-top: 2em;
+  padding-top: 1em;
   text-align: center;
   font-size: 14pt;
   text-decoration: none;
+}
+
+.Wikipedia-data {
+  margin: 20px;
+  text-align: left;
+}
+
+.Wikipedia-data h3,
+p,
+a {
+  padding: 10px;
+}
+
+.Wikipedia-data a {
+  text-decoration: none;
+  color: black;
+}
+
+.Wikipedia-data a:hover {
+  text-decoration: underline;
 }
 
 .Monument-images {
@@ -167,4 +208,47 @@ p {
   margin: 2em auto 3em auto;
   text-align: center;
   font-size: 12pt;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 850px) {
+  .App-title {
+    margin-top: 10px;
+    font-size: 40px;
+  }
+  .App-header {
+    margin-top: 1em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .App-title {
+    margin-top: 10px;
+    font-size: 40px;
+  }
+  .App-header {
+    margin-top: 1em;
+    min-height: 140px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .List-view-search {
+    position: absolute;
+    z-index: 20;
+    width: 100px;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+  .List-view-search input,
+  .Markers-list {
+    font-size: 12pt;
+  }
+  .List-view-search input {
+    padding: 10px 0 10px 10px;
+    width: 150px;
+    text-align: left;
+  }
 }

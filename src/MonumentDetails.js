@@ -31,7 +31,6 @@ class MonumentDetails extends Component {
       }
       throw new Error( 'Network response was not ok: ' + res.statusText );
     }).then(function(data){
-      console.log(data)
       self.setState({markerData: data});
     });
   }
@@ -87,11 +86,13 @@ class MonumentDetails extends Component {
             <Link className="List-view-link" to="/">
               <h1 className="App-title">Gaudi's Tour</h1>
             </Link>
-            <a className="List-view-link" onClick={this.handleClick.bind(this)}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
-              </svg>
-            </a>
+            {!this.state.showNavBar && (
+              <a className="List-view-link" onClick={this.handleClick.bind(this)}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
+                </svg>
+              </a>
+            )}
           </header>
           <MyMapComponent   
             googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
@@ -105,15 +106,20 @@ class MonumentDetails extends Component {
         </div>
         {this.state.showNavBar && (
           <aside className="List-view-search">
+            <a className="List-view-link" onClick={this.handleClick.bind(this)}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
+              </svg>
+            </a>
             <Link className="Search-monument" to="/listview">
             </Link>
             <div className="Monument-details">
+              <div className="Wikipedia-data">
+                <h3>{wikiTitle}</h3>
+                <p>{wikiIntro}</p>
+                <a href={wikiLink}>Read more</a>
+              </div>
               <div className="Monument-images">
-                <div className="Wikipedia-link">
-                  <h3>{wikiTitle}</h3>
-                  <p>{wikiIntro}</p>
-                  <a href={wikiLink}>{wikiLink}</a>
-                </div>
                 <ul>
                   {this.state.markerImg.map((img, index) => (
                     <FlickImg photo={img} key={index}/>

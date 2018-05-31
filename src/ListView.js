@@ -38,11 +38,6 @@ class ListView extends Component {
             <Link className="List-view-link" to="/">
               <h1 className="App-title">Gaudi's Tour</h1>
             </Link>
-            <Link className="List-view-link" to="/">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
-              </svg>
-            </Link>
           </header>
           <MyMapComponent   
             googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
@@ -61,6 +56,11 @@ class ListView extends Component {
           </MyMapComponent>
         </div>
         <aside className="List-view-search">
+          <Link className="List-view-link" to="/">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
+            </svg>
+          </Link>
           <input type='text' placeholder='Search monuments' value={this.state.query}
               onChange={(event) => this.updateQuery(event.target.value)}/>
               <ul className="Markers-list">
