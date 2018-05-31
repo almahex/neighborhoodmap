@@ -13,19 +13,21 @@ class MapArea extends Component {
     return (
       <div className="Map-area">
         <header className="App-header">
-          <Link className="List-view-link" to="/">
-            <h1 className="App-title">Gaudi's Tour</h1>
-          </Link>
-          <Link className="List-view-link" to="/listview">
-            <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            	<path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
-          	</svg>
-          </Link>
+          <div className="Light-box">
+            <Link className="List-view-link" to="/">
+              <h1 className="App-title">Gaudi's Tour</h1>
+            </Link>
+            <Link className="List-view-link" to="/listview">
+              <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              	<path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
+            	</svg>
+            </Link>
+          </div>
         </header>
       	<MyMapComponent   
 	        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
 	        loadingElement={<div style={{ height: `100%` }} />}
-	        containerElement={<div style={{ height: `100vh` }} />}
+	        containerElement={<div style={{ height: `86.5vh` }} />}
 	        mapElement={<div style={{ height: `100%` }} />}
 	        defaultZoom={12.7}
 	        defaultCenter={{lat: 41.3968849, lng: 2.1587406}}>

@@ -17,38 +17,55 @@ p {
 
 /* Header */
 
+.Map-area h1 {
+  padding-bottom: 19px;
+}
+
+.Monument-map h1 {
+  padding-bottom: 4px;
+}
+
+.Monument-map .Light-box {
+  height: 83px;
+}
+
+.Monument-map .List-view-link svg {
+  padding-bottom: 0px;
+}
+
 .App-header {
   width: 100%;
   margin: 0 auto 0;
   padding-top: 3em;
   color: black;
-  border-bottom: 5px solid #fd9f15;
+  z-index: 10;
+  background-image: url('./icons/header.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 13.5vh;
+}
+
+.Light-box {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  z-index: 10;
-  min-height: 100px;
-  background-image: url('./icons/header.jpg');
   align-items: flex-end;
-}
-
-.App-header h1 {
-  padding-left: 1em;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 12;
+  margin-top: 2em;
 }
 
 .App-header a {
   padding-right: 3em;
+  color: white;
+  text-decoration: none;
 }
 
 .App-title {
   font-weight: 900;
   letter-spacing: 3px;
   font-size: 47px;
-}
-
-.App-header a {
-  color: white;
-  text-decoration: none;
+  padding: 4px;
 }
 
 /* Map Area */
@@ -82,7 +99,7 @@ p {
   outline: none;
   text-decoration: none;
   text-align: center;
-  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 /* List View */
@@ -238,7 +255,7 @@ a {
 @media screen and (max-width: 850px) {
   .App-title {
     margin-top: 10px;
-    font-size: 40px;
+    font-size: 30px;
   }
   .App-header {
     margin-top: 0;
@@ -246,12 +263,7 @@ a {
 }
 
 @media screen and (max-width: 800px) {
-  .App-title {
-    margin-top: 10px;
-    font-size: 40px;
-  }
   .App-header {
-    margin-top: 0;
     padding-top: 2em;
     min-height: 140px;
   }
