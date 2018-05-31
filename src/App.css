@@ -76,7 +76,7 @@ p {
   width: 100%;
   justify-content: space-between;
   overflow: hidden;
-  height: 70vh;
+  height: 100vh;
   margin-top: -100px;
   padding-top: 100px;
   position: relative;
@@ -239,7 +239,7 @@ a {
     z-index: 20;
     width: 100px;
     top: 0;
-    right: 0;
+    right: -10px;
     height: 100%;
   }
   .List-view-search input,

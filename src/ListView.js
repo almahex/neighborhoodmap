@@ -42,7 +42,7 @@ class ListView extends Component {
           <MyMapComponent   
             googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
             loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `500px` }} />}
+            containerElement={<div style={{ height: `100vh` }} />}
             mapElement={<div style={{ height: `100%` }} />}
             defaultZoom={12.7}
             defaultCenter={{lat: 41.3968849, lng: 2.1587406}}>
