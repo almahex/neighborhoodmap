@@ -13,7 +13,7 @@ var filesToCache = [
   'src/MonumentDetails.js',
   'src/MyMapComponent.js',
   'src/NoMatch.js', 
-  'src/sw.js',
+  'public/sw.js',
   'src/icons/glass.svg',
   'src/icons/header.jpg',
   'src/icons/mapMarker.png', 
@@ -22,7 +22,7 @@ var filesToCache = [
   'public/manifest.json'
 ];
 
-var staticCacheName = 'myneighborhood-cache-v1';
+var staticCacheName = 'neighborhoodmap-cache-v1';
 
 //Create the cache and add all the files to it in the install event
 self.addEventListener('install', function(event) {
@@ -49,13 +49,17 @@ self.addEventListener('fetch', function(event) {
 
       .then(function(response) {
         if(response.status === '404'){
-        	console.log("Page not found!");
+          console.log("Page not found!");
         }
 
       return caches.open(staticCacheName).then(function(cache) {
         //Add to the cache the selected images with the correct size
         //depending on the device
-       	return response;
+        if (event.request.url.endsWith('.jpg') || event.request.url.endsWith('.woff2') || event.request.url.startsWith('https://maps.')
+            || event.request.url.startsWith('https://fonts') || event.request.url.startsWith('https://farm') || event.request.url.startsWith('https://api.flickr')) {
+          cache.put(event.request.url, response.clone());
+        }
+        return response;
         });
       });
     })
