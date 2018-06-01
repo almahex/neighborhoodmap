@@ -33,6 +33,8 @@ In order to use it, download the package, cd into it and simply run ´npm instal
 * [Handling events in react](https://reactjs.org/docs/handling-events.html)
 * [Flickr API - Method flickr.photo.search](https://www.flickr.com/services/api/flickr.photos.search.html)
 * [Wikipedia API](https://www.mediawiki.org/wiki/API:Main_page)
+* [Register service worker](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register)
+* [Catching files with service worker](https://developers.google.com/web/ilt/pwa/lab-caching-files-with-service-worker)
 
 ### Examples taken as a reference
 

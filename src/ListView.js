@@ -8,19 +8,25 @@ import sortBy from 'sort-by';
 
 class ListView extends Component {
 
+  //Stores the query that the user writes
   state = {
     query: '',
   }
 
+  //Updates the query
   updateQuery = (query) => {
     this.setState({ query: query })
   }
 
+  //If the user clicks on a marker, the page redirects to the page of that monument
   handleClick = (path, e) => {
     this.props.history.push(path)
   }
 
+  //Renders the view of the map with a navigation menu at the right side where the user
+  //can choose to click on listed monument or search for a monument to be listed 
   render() {
+    //If there is a query, only matched monuments are listed
     let showingMonuments
     if (this.state.query) {
       const match = new RegExp(escapeRegExp(this.state.query), 'i')
@@ -29,6 +35,7 @@ class ListView extends Component {
       showingMonuments = this.props.markers
     }
 
+    //Before rendering the list of monuments, they are sorted by name
     showingMonuments.sort(sortBy('name'))
 
     return (

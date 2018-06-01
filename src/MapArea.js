@@ -5,10 +5,12 @@ import { Marker } from 'react-google-maps';
 
 class MapArea extends Component {
 
+  //If the user clicks on a marker, the page redirects to the page of that monument
   handleClick = (path, e) => {
     this.props.history.push(path)
   }
 
+  //Renders a map with all the markers of the monuments
   render() {
     return (
       <div className="Map-area" aria-label="Main map with all the markers">

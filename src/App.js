@@ -9,6 +9,7 @@ import NoMatch from './NoMatch';
 
 class App extends Component {
 
+  //Information about the monuments that the app shows
   state = {
     markers: [
       {
@@ -49,6 +50,7 @@ class App extends Component {
     ]
   }
 
+  //Rendering of all the pages based on routes
   render() {
     return (
       <div className="App">

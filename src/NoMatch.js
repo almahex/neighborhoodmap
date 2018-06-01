@@ -1,5 +1,6 @@
 import React from 'react';
 
+//If the url does not match with any defined one it tells the user so
 const NoMatch = ({ location }) => (
   <div className="No-match" aria-label="No page was found with this url">
     <h3>

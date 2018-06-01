@@ -9,18 +9,23 @@ import specialMarker from './icons/mapMarker.png'
 
 class MonumentDetails extends Component {
 
+  //Stores the images from Flickr, the data from the Wikipedia and a boolean for showing
+  //or hiding the navigation menu
   state = {
     markerImg: [],
     markerData: [],
     showNavBar: true,
   }
 
+  //Handles the navigation menu whether the user wants to see the information about
+  //the monument or just its location 
   handleClick() {
     this.setState(prevState => ({
       showNavBar: !prevState.showNavBar
     }));
   }
 
+  //Handles the API query of Wikipedia by using fetch
   getWikipediaData() {
     var self = this;
     let searchText = this.props.marker.name;
@@ -36,10 +41,7 @@ class MonumentDetails extends Component {
     });
   }
 
-  getFlickrPhotoUrl(image) {
-    return `https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`;
-  }
-
+  //Handles the API query of Flickr by using the Superagent component
   handleSearch() {
     let searchText = this.props.marker.name;
     let allImages = []
@@ -60,6 +62,9 @@ class MonumentDetails extends Component {
       });
   }
 
+  //After using array destructuring from the Wikipedia response
+  //check if there is any other array inside of it and get the 
+  //data from the first one
   checkArray(a) {
     if (a instanceof Array && a.length > 1) {
       return a[0]
@@ -68,11 +73,15 @@ class MonumentDetails extends Component {
     }
   }
 
+  //Hook used in order to retrive the data from Flickr and Wikipedia
+  //before the page is rendered
   componentWillMount() {
     this.handleSearch()
     this.getWikipediaData()
   }
 
+  //Renders the map with the monuments marker and a navigation menu at the right side
+  //that displays Wikipedia information about that monument and some photos from Flickr
   render() {
     const marker = this.props.marker
     const [ , preWikiTitle, preWikiIntro, preWikiLink ] = this.state.markerData
