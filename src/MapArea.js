@@ -11,7 +11,7 @@ class MapArea extends Component {
 
   render() {
     return (
-      <div className="Map-area">
+      <div className="Map-area" aria-label="Main map with all the markers">
         <header className="App-header">
           <div className="Light-box">
             <Link className="List-view-link" to="/">
@@ -24,7 +24,7 @@ class MapArea extends Component {
             </Link>
           </div>
         </header>
-      	<MyMapComponent   
+      	<MyMapComponent role="Application"  
 	        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
 	        loadingElement={<div style={{ height: `100%` }} />}
 	        containerElement={<div style={{ height: `86.5vh` }} />}

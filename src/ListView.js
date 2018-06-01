@@ -32,16 +32,16 @@ class ListView extends Component {
     showingMonuments.sort(sortBy('name'))
 
     return (
-      <div className="List-view">
+      <div className="List-view" aria-label="Map with all the markers and a list of these monuments">
         <div className="List-view-header-map">
           <header className="App-header">
             <div className="Light-box">
-              <Link className="List-view-link" to="/">
+              <Link className="List-view-link" to="/" tabIndex="1">
                 <h1 className="App-title">Gaudi's Tour</h1>
               </Link>
             </div>
           </header>
-          <MyMapComponent   
+          <MyMapComponent role="Application"   
             googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: `86.5vh` }} />}
@@ -57,17 +57,17 @@ class ListView extends Component {
             ))}
           </MyMapComponent>
         </div>
-        <aside className="List-view-search">
-          <Link className="List-view-link-aside" to="/">
+        <aside className="List-view-search" aria-label="List of all the monuments marked in the map">
+          <Link className="List-view-link-aside" to="/" tabIndex="2">
             <span role="img" aria-label="close">❌</span>
           </Link>
           <br/>
-          <input type='text' placeholder='Search monuments' value={this.state.query}
+          <input type='text' placeholder='Search monuments' value={this.state.query} tabIndex="3"
               onChange={(event) => this.updateQuery(event.target.value)}/>
-              <ul className="Markers-list">
-                {showingMonuments.map(marker => (
+              <ul className="Markers-list" aria-label="List of monuments marked in the map">
+                {showingMonuments.map((marker, index) => (
                   <li key={marker.id}>
-                    <Link className="List-view-link" to={`/listview/${marker.path}`}>
+                    <Link className="List-view-link" to={`/listview/${marker.path}`} tabIndex={(index+4).toString()}>
                       {marker.name}
                     </Link>
                   </li>

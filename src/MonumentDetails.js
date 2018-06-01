@@ -81,15 +81,16 @@ class MonumentDetails extends Component {
     const wikiLink = this.checkArray(preWikiLink)
 
     return (
-      <div className={!this.state.showNavBar ? "List-view Monument-map" : "List-view"}>
+      <div className={!this.state.showNavBar ? "List-view Monument-map" : "List-view"}
+           aria-label="Map of the monument with its corresponding marker">
         <div className="List-view-header-map">
           <header className="App-header">
             <div className="Light-box">
-              <Link className="List-view-link" to="/">
+              <Link className="List-view-link" to="/" tabIndex="1">
                 <h1 className="App-title">Gaudi's Tour</h1>
               </Link>
               {!this.state.showNavBar && (
-                <a className="List-view-link" onClick={this.handleClick.bind(this)}>
+                <a className="List-view-link" onClick={this.handleClick.bind(this)} tabIndex="2">
                   <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
                   </svg>
@@ -97,7 +98,7 @@ class MonumentDetails extends Component {
               )}
             </div>
           </header>
-          <MyMapComponent   
+          <MyMapComponent tabIndex="9999" role="Application"  
             googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: `86.5vh` }} />}
@@ -108,22 +109,22 @@ class MonumentDetails extends Component {
           </MyMapComponent>
         </div>
         {this.state.showNavBar && (
-          <aside className="List-view-search">
-            <a className="List-view-link-aside" onClick={this.handleClick.bind(this)}>
+          <aside className="List-view-search" aria-label="Information and some photos of the monument">
+            <a className="List-view-link-aside" tabIndex="2" onClick={this.handleClick.bind(this)}>
               <span role="img" aria-label="close">❌</span>
             </a>
-            <Link className="Search-monument" to="/listview">
+            <Link className="Search-monument" to="/listview" tabIndex="3">
             </Link>
             <div className="Monument-details">
-              <div className="Wikipedia-data">
+              <div className="Wikipedia-data" aria-label="Monument's information from Wikipedia">
                 <h3>{wikiTitle}</h3>
                 <p>{wikiIntro}</p>
-                <a href={wikiLink}>Read more</a>
+                <a href={wikiLink} tabIndex="4">Read more</a>
               </div>
-              <div className="Monument-images">
+              <div className="Monument-images" aria-label="Monument's photos from Flickr">
                 <ul>
                   {this.state.markerImg.map((img, index) => (
-                    <FlickImg photo={img} key={index}/>
+                    <FlickImg photo={img} key={index} numindex={(index+5).toString()}/>
                   ))}
                 </ul>
               </div>

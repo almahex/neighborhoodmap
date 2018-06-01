@@ -17,22 +17,6 @@ p {
 
 /* Header */
 
-.Map-area h1 {
-  padding-bottom: 19px;
-}
-
-.Monument-map h1 {
-  padding-bottom: 4px;
-}
-
-.Monument-map .Light-box {
-  height: 83px;
-}
-
-.Monument-map .List-view-link svg {
-  padding-bottom: 0px;
-}
-
 .App-header {
   width: 100%;
   margin: 0 auto 0;
@@ -73,6 +57,10 @@ p {
 .Map-area {
   width: 100%;
   height: 100%;
+}
+
+.Map-area h1 {
+  padding-bottom: 19px;
 }
 
 .List-view-link-aside {
@@ -227,6 +215,18 @@ a {
 .Monument-images ul li {
   list-style: none;
   padding: 10px;
+}
+
+.Monument-map h1 {
+  padding-bottom: 4px;
+}
+
+.Monument-map .Light-box {
+  height: 83px;
+}
+
+.Monument-map .List-view-link svg {
+  padding-bottom: 0px;
 }
 
 /* No Page Match */
