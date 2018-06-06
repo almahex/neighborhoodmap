@@ -43,7 +43,7 @@ class ListView extends Component {
         <div className="List-view-header-map">
           <header className="App-header">
             <div className="Light-box">
-              <Link className="List-view-link" to="/" tabIndex="1">
+              <Link className="List-view-link" to="/" tabIndex="0">
                 <h1 className="App-title">Gaudi's Tour</h1>
               </Link>
             </div>
@@ -65,16 +65,16 @@ class ListView extends Component {
           </MyMapComponent>
         </div>
         <aside className="List-view-search" aria-label="List of all the monuments marked in the map">
-          <Link className="List-view-link-aside" to="/" tabIndex="2">
+          <Link className="List-view-link-aside" to="/">
             <span role="img" aria-label="close">❌</span>
           </Link>
           <br/>
-          <input type='text' placeholder='Search monuments' value={this.state.query} tabIndex="3"
+          <input type='text' placeholder='Search monuments' value={this.state.query}
               onChange={(event) => this.updateQuery(event.target.value)}/>
               <ul className="Markers-list" aria-label="List of monuments marked in the map">
                 {showingMonuments.map((marker, index) => (
                   <li key={marker.id}>
-                    <Link className="List-view-link" to={`/listview/${marker.path}`} tabIndex={(index+4).toString()}>
+                    <Link className="List-view-link" to={`/listview/${marker.path}`}>
                       {marker.name}
                     </Link>
                   </li>

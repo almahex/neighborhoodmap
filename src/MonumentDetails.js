@@ -57,8 +57,13 @@ class MonumentDetails extends Component {
         privacy_filter: 1
       })
       .end(function(error, res){
-        allImages = res.body.photos.photo.slice(24,34)
-        self.setState({markerImg: allImages});
+        if (error) {
+          console.log(error);
+          self.setState({markerImg: []});
+        } else if (res) {
+          allImages = res.body.photos.photo.slice(24,34)
+          self.setState({markerImg: allImages});
+        }
       });
   }
 
@@ -84,8 +89,7 @@ class MonumentDetails extends Component {
   //that displays Wikipedia information about that monument and some photos from Flickr
   render() {
     const marker = this.props.marker
-    const [ , preWikiTitle, preWikiIntro, preWikiLink ] = this.state.markerData
-    const wikiTitle = this.checkArray(preWikiTitle)
+    const [ , , preWikiIntro, preWikiLink ] = this.state.markerData
     const wikiIntro = this.checkArray(preWikiIntro)
     const wikiLink = this.checkArray(preWikiLink)
 
@@ -126,16 +130,21 @@ class MonumentDetails extends Component {
             </Link>
             <div className="Monument-details">
               <div className="Wikipedia-data" aria-label="Monument's information from Wikipedia">
-                <h3>{wikiTitle}</h3>
+                <h3>{marker.name}</h3>
                 <p>{wikiIntro}</p>
                 <a href={wikiLink} tabIndex="4">Read more</a>
               </div>
               <div className="Monument-images" aria-label="Monument's photos from Flickr">
-                <ul>
-                  {this.state.markerImg.map((img, index) => (
-                    <FlickImg photo={img} key={index} numindex={(index+5).toString()}/>
-                  ))}
-                </ul>
+                {this.state.markerImg === [] && (
+                  <p>Cannot load images.</p>
+                )}
+                {this.state.markerImg.length > 0 && (
+                  <ul>
+                    {this.state.markerImg.map((img, index) => (
+                      <FlickImg photo={img} key={index}/>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           </aside>

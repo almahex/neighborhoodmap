@@ -11,7 +11,7 @@ class FlickImg extends Component {
 
     return (
       <li>
-        <a href={photoUrl} tabIndex={this.props.numindex}>
+        <a href={photoUrl}>
           <img src={photoThumb} alt={photo.title}/>
         </a>
       </li>

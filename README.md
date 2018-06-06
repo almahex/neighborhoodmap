@@ -15,7 +15,7 @@ In order to use it, download the package, cd into it and simply run ´npm instal
 * [create-react-app](https://www.npmjs.com/package/create-react-app)
 * [react-router-dom](https://www.npmjs.com/package/react-router-dom)
 * [react-google-maps](https://www.npmjs.com/package/react-google-maps)
-* [escape-string-regexp]https://www.npmjs.com/package/escape-string-regexp)
+* [escape-string-regexp](https://www.npmjs.com/package/escape-string-regexp)
 * [sort-by](https://www.npmjs.com/package/sort-by)
 * [superagent](https://www.npmjs.com/package/superagent)
 
